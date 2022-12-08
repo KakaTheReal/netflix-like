@@ -88,7 +88,7 @@ function App() {
                 </form>
                 <Navbar/>
             </header>
-            <div className="container">
+            <div>
                 <Routes>
                     <Route path="/" element={<Home/>}/>
                     <Route path="lastRelease" element={<LastRelease/>}/>
@@ -96,30 +96,30 @@ function App() {
                     <Route path="topRated" element={<TopRated/>}/>
                     <Route path="upcoming" element={<Upcoming/>}/>
                 </Routes>
-            </div>
-            {movies.length ?
-                <main>
-                    {movie ?
-                        <div className="poster"
-                             style={{backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)), url(${BACKDROP_PATH}${movie.backdrop_path})`}}>
-                            {playing ?
-                                <>
-                                </> :
-                                <div className="center-max-size">
-                                    <div className="poster-content">
-                                        <h1>{movie.title}</h1>
-                                        <p>{movie.overview}</p>
+                {movies.length ?
+                    <main>
+                        {movie ?
+                            <div className="poster"
+                                style={{backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)), url(${BACKDROP_PATH}${movie.backdrop_path})`}}>
+                                {playing ?
+                                    <>
+                                    </> :
+                                    <div className="center-max-size">
+                                        <div className="poster-content">
+                                            <h1>{movie.title}</h1>
+                                            <p>{movie.overview}</p>
+                                        </div>
                                     </div>
-                                </div>
-                            }
-                        </div>
-                        : null}
+                                }
+                            </div>
+                            : null}
 
-                    <div className={"center-max-size container"}>
-                        {renderMovies()}
-                    </div>
-                </main>
-                : 'Sorry, no movies found'}
+                        <div className={"center-max-size container"}>
+                            {renderMovies()}
+                        </div>
+                    </main>
+                    : 'Sorry, no movies found'}
+            </div>
         </div>
     );
 
